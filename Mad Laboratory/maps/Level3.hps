@@ -1,0 +1,35 @@
+void OnStart ()
+{
+	PlayMusic("20_amb.ogg", true, 0.6,  5, 1, true);
+	AddEntityCollideCallback("Player", "SpawnMoose", "MooseManSpawn", true, 1); 
+	AddUseItemCallback("", "HKey", "level_cistern_1", "OpenLabDoor", true);
+
+}
+void OpenLabDoor(string &in asItem, string &in asEntity)
+{
+
+	SetLevelDoorLocked("level_cistern_1", false);
+        PlaySoundAtEntity("", "unlock_door.snt", "level_cistern_1", 0, false);
+        RemoveItem("HKey");
+} 
+void MooseManSpawn(string &in asParent, string &in asChild, int alState)
+{
+	SetEntityActive("Mooseman", true);
+	AddEnemyPatrolNode("Mooseman", "PathNodeArea_1", 0, "Idle");
+	AddEnemyPatrolNode("Mooseman", "PathNodeArea_2", 0, "Idle");
+	GiveSanityDamage(50.0f, true);
+}
+void OnEnter()
+{
+
+}
+void OnLeave()
+{
+
+}
+void UnlockCellar ()
+{
+	SetSwingDoorLocked("Doorkitchen", false, true);
+	PlaySoundAtEntity("", "unlock_door", "Doorkitchen", 0, false);
+	RemoveItem("CellarKey");
+}

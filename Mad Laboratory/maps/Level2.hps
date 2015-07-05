@@ -1,0 +1,100 @@
+void OnStart ()
+{
+PlayMusic("10_amb.ogg", true, 0.6, 3, 1, true);
+AddUseItemCallback("", "cbar_1", "door", "UsedCrowbarOnDoor", true);
+AddEntityCollideCallback("crowbar_joint_1", "ScriptArea_1", "CollideAreaBreakDoor", true, 1);
+AddUseItemCallback("", "KitchenKey", "Doorkitchen", "UsedKeyOnDoor", true);
+SetEntityPlayerInteractCallback("", "PuzzleQuest", true);
+SetEntityPlayerInteractCallback("Lever", "GruntSpawn", true);
+
+}
+
+void GruntSpawn(string &in asItem)
+{
+	SetEntityActive("Grunt_1", true);
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_1", 0, "Idle");
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_2", 0, "Idle");
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_3", 0, "Idle");
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_4", 0, "Idle");
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_5", 0, "Idle");
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_6", 0, "Idle");
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_7", 0, "Idle");
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_8", 0, "Idle");
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_9", 0, "Idle");
+	AddEnemyPatrolNode("Grunt_1", "PathNodeArea_10", 0, "Idle");
+	SetPlayerLampOil(0);
+
+	
+}
+void PuzzleQuest(string &in asItem)
+{
+	 AddQuest("findlever","findlever");
+}
+void UnlockPuzzle(string &in asEntity, int LeverState)
+{
+		if(LeverState == 1) {
+			SetSwingDoorLocked("cellar_1", false, true);
+			PlaySoundAtEntity("", "unlock_door.snt", "cellar_1", 0, false);
+			GiveSanityBoostSmall();
+			SetLeverStuckState(asEntity, LeverState, true);
+			CompleteQuest("findlever", "findlever");
+			
+			
+		}
+}
+void UsedKeyOnDoor ()
+{
+	SetSwingDoorLocked("Doorkitchen", false, true);
+	PlaySoundAtEntity("", "unlock_door", "Doorkitchen", 0, false);
+	RemoveItem("KitchenKey");
+}
+
+void UsedCrowbarOnDoor(string &in asItem, string &in asEntity)
+ {
+
+ AddTimer("", 0.2, "TimerSwitchShovel");
+ PlaySoundAtEntity("", "player_crouch.snt", "Player", 0.05, false);
+ RemoveItem("cbar_1");
+ 
+ }
+
+ void TimerSwitchShovel(string &in asTimer)
+ {
+ PlaySoundAtEntity("","puzzle_place_jar.snt", "", 0, false);
+ SetEntityActive("crowbar_joint_1", true);
+ }
+ void CollideAreaBreakDoor(string &in asParent, string &in asChild, int alState)
+ {
+ AddPlayerSanity(25);
+ PlayMusic("10_puzzle01.ogg", false, 0.7, 0.1, 10, false);
+ SetSwingDoorLocked("door", false, true);
+ AddPropImpulse("door", 0, 0, -50, "World");
+ SetSwingDoorDisableAutoClose("door", true);
+ SetSwingDoorClosed("door", false, false);
+ SetMoveObjectState("door", 1);
+ PlaySoundAtEntity("","break_wood_metal", "BreakArea", 0, false);
+ CreateParticleSystemAtEntity("", "ps_hit_wood", "BreakArea", false);
+ SetEntityActive("crowbar_joint_1", false);
+
+ } 
+
+ void CBarDoor(string &in entity)
+ 
+ 
+{
+    if(GetSwingDoorLocked("door") == true)
+    {
+ 
+        SetMessage("Hints", "CrowBarDoorText", 2.0f);
+ 
+    }
+}
+void onEnter()
+{
+
+}
+
+void onLeave()
+{
+
+}

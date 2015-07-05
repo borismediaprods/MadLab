@@ -1,0 +1,142 @@
+void OnStart()
+{
+AddUseItemCallback("", "Key", "Door", "KeyOnDoor", true);
+AddUseItemCallback("", "Key2", "SDoor", "Unlock", true);
+AddUseItemCallback("", "cbar", "Drawer", "UsedCrowbarOnDoor", true);
+AddEntityCollideCallback("Joint", "Area", "CollideAreaBreakDoor", true, 1);
+SetEntityPlayerInteractCallback("Drawer", "FindCbar", true);
+AddEntityCollideCallback("Player" , "MonsterTrigger" , "MonsterFunc1" , true , 1);
+AddEntityCollideCallback("Grunt", "GruntLeave", "GruntDead", true, 1);
+AddEntityCollideCallback("Cranck", "Attach", "LeverTogether", true, 1);
+AddEntityCollideCallback("Player", "EndArea", "CreditTrigger", true, 1);
+PlayMusic("10_amb.ogg", true, 0.6,  5, 1, true);
+
+
+}
+void CreditTrigger(string &in asParent, string &in asChild, int alState)
+{
+	AddTimer("Timer1", 3, "Credits");
+	FadeOut(3);
+}
+
+void Credits(string &in asTimer)
+{
+	StartCredits("ending_alexander.ogg", false, "Ending", "Credits", 5);
+}
+void Lever2Unlock(string &in asEntity, int LeverState)
+{
+		if(LeverState == 1) {
+			SetSwingDoorLocked("EndSwing", false, true);
+			GiveSanityBoostSmall();
+			SetLeverStuckState(asEntity, LeverState, true);
+			
+			
+			
+		}
+}
+void LeverTogether(string &in asParent, string &in asChild, int alState)
+{
+	SetEntityActive("Cranck" , false);
+	SetEntityActive("Mount" , false);
+	SetEntityActive("Lever2" , true);
+}
+
+void GruntDead(string &in asParent, string &in asChild, int alState)
+{
+	SetEntityActive("Grunt" , false);
+}
+
+void MonsterFunc1(string &in asParent , string &in asChild , int alState)
+{
+SetEntityActive("Grunt" , true);
+AddEnemyPatrolNode("Grunt", "PathNodeArea_1", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_2", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_3", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_4", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_5", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_6", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_7", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_8", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_9", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_10", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_11", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_12", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_13", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_14", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_15", 0, "Idle");
+AddEnemyPatrolNode("Grunt", "PathNodeArea_16", 0, "Idle");
+
+
+}
+
+void Unlock(string &in asItem, string &in asEntity)
+{
+	SetSwingDoorLocked("SDoor", false, true);
+PlaySoundAtEntity("", "unlock_door", "SDoor", 0, false);
+RemoveItem("Key2");
+}
+
+void FindCbar(string &in asItem)
+{
+	AddQuest("findcrowbar","findcrowbar");
+}
+void UsedCrowbarOnDoor(string &in asItem, string &in asEntity)
+ {
+ AddTimer("", 0.2, "TimerSwitchShovel");
+ RemoveItem("cbar");
+ SetEntityActive("Joint", true);
+ }
+ void CollideAreaBreakDoor(string &in asParent, string &in asChild, int alState)
+ {
+ AddPlayerSanity(25);
+ PlayMusic("10_puzzle01.ogg", false, 0.7, 0.1, 10, false);
+ SetSwingDoorLocked("Drawer", false, true);
+ PlaySoundAtEntity("","break_wood_metal", "Break", 0, false);
+ CreateParticleSystemAtEntity("", "ps_hit_wood", "Break", false);
+ SetEntityActive("Joint", false);
+ SetEntityActive("fake", true);
+ CompleteQuest("findcrowbar", "findcrowbar");
+ } 
+void KeyOnDoor(string &in asItem, string &in asEntity)
+{
+SetSwingDoorLocked("Door", false, true);
+PlaySoundAtEntity("", "unlock_door", "Door", 0, false);
+RemoveItem("Key");
+} 
+
+
+void Door(string &in entity)
+
+{
+
+if(GetSwingDoorLocked("Door")==true)
+{
+
+SetMessage("Hints", "LockedDoor", 2.0f);
+
+	}
+
+}
+
+
+void UnlockLever(string &in asEntity, int LeverState)
+{
+		if(LeverState == 1) {
+			SetSwingDoorLocked("prison_1", false, true);
+			PlaySoundAtEntity("", "unlock_door.snt", "prison_1", 0, false);
+			GiveSanityBoostSmall();
+			SetLeverStuckState(asEntity, LeverState, true);
+			
+			
+			
+		}
+}
+void OnEnter()
+{
+
+}
+
+void OnLeave()
+{
+
+}

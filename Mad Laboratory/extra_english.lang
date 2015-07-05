@@ -1,0 +1,62 @@
+<LANGUAGE>
+	
+	<CATEGORY Name= "CustomStoryMain">
+		<Entry Name="Description">You wake up in the house you've never been to before. [br]You're lost and there is only one way to survive[br]Beat the game!</Entry>
+	</CATEGORY>
+		
+	<CATEGORY Name= "Inventory">
+			<Entry Name= "ItemName_BRkey">bedroom key</Entry>
+			<Entry Name= "ItemDesc_BRkey">This unlocks the bedroom door</Entry>
+			<Entry Name= "ItemName_PianoKey">a Small metal key</Entry>
+			<Entry Name= "ItemDesc_PianoKey">I don't know what door this unlocks</Entry>
+			<Entry Name= "ItemName_Cellar key">Looks like it opens some kind of a cellar door</Entry>
+			<Entry Name= "ItemName_HKey">a dirty key</Entry>
+			<Entry Name= "ItemDesc_HKey">This key was hidden underground for a long period of time.</Entry>
+			<Entry Name= "ItemName_MetalKey">Metal Key</Entry>
+			<Entry Name= "ItemDesc_MetalKey">I don't know what door this unlocks</Entry>
+			<Entry Name= "ItemName_SKey">Storage Key</Entry>
+			<Entry Name= "ItemDesc_SKey">A Key which unlocks a storage door</Entry>
+
+
+	</CATEGORY>
+	
+	
+	<CATEGORY Name= "Journal">
+		<Entry Name="Quest_findlever_Text">Some kind of a mechanism is attached to this door</Entry>
+		<Entry Name="Quest_findcrowbar_Text">I need to find something to break this open</Entry>
+		<Entry Name= "Note_KeyNote_Name">William's note</Entry>
+		<Entry Name= "Note_KeyNote_Text">I always put my key in drawer, always! I put it here incase something wrong happens in my laboratory. I lock my door with this key and hide in my room!</Entry>
+		<Entry Name= "Note_LabNote_Name">Beware</Entry>
+		<Entry Name= "Note_LabNote_Text">This next room is my grand diner. My cook Daniel cooks all sorts of good meals down there, he is an amazing cook. But I have a feeling that he is stealing something from me. I better investigate before something goes missing. I gave him the smallest room, and I always lock him in for the night and just in case, I have an axe under my bed! </Entry>
+		<Entry Name= "Note_LifeNote_Name">William's note</Entry>
+		<Entry Name= "Note_LifeNote_Text">My name is William Wolfgang Grey, I'm a neuro scientist and a mathematic. I live in this mansion all by myself, and I run a lab downstairs. I test different potions and chemicals on dead humans and try to bring them back to life. I had no sucess yet, all my experiments always ended up as a failture. Many people call me a loser, but one day I will show them that I'm a genius![br] Tonight I'm planning my sixty-seventh test, and if I suceed I will have a grand feast!</Entry>
+		<Entry Name= "Note_CookNote_Name">A letter from the cook</Entry>
+		<Entry Name= "Note_CookNote_Text">I can't work in this place anymore, I'm scared... The food that I cook... Is not for humans! Everytime I put a plate on the counter, when it returns...It's broken, smells terrible and has huge teethmarks in the middle. I don't know what Ivan is or what he is doing, but I will...I will just quit this job! I can't work here [br][br][br] Oh no, someone is knockin on my door. I bette [br][br][br] [note ends here]</Entry>
+		<Entry Name= "Note_CookLife_Name">A note from Daniel</Entry>
+		<Entry Name= "Note_CookLife_Text">Hello, my name is Daniel Michells[br][br][br] I work as cook in this castle, this is my room. It's quite small but I don't mind it. I started working here this year, becuae the previous cook went missing and is still not found due this date. I graduated from University of Minisota and moved here to Chicago 5 years ago. I'm planning to get some experience here and move on to bigger places to work. [br][br][br] I met my girlfriend Anne here, and we're about to get married in a month. I am so happy right now, I wish you would know.[br][br][br] Best Regards,[br]Daniel Michells</Entry>
+		<Entry Name= "Note_CantRun_Name">Unknown Entry</Entry>
+		<Entry Name= "Note_CantRun_Text">I can't run[br]It hurts[br]I cannot stand the pain[br]I give up[br]They can take me[br]I can't even see straight anymore[br]If you are reading  this, get out as fast as possible[br] They will get you if you're slow[br]Oh my stomach[br] I c [Note is stained with blood]</Entry>
+		<Entry Name= "Note_LNote_Name">A Burnt note</Entry>
+		<Entry Name= "Note_LNote_Text">I have not suceeded in anything past last 10 years of hard work. What am I doing wrong? I'm being misjudged by lord.[br][br][br] Please forgive me Daniel, I have ran out of subjects for my tests. You are next[br][br][br] I am truly sorry, [br]W.</Entry>
+	</CATEGORY>
+	
+	<CATEGORY Name= "Hints">
+			<Entry Name="FirstDoorText">A key should be around here, somewhere...</Entry>
+			<Entry Name="LockedDoor">Locked</Entry>
+			<Entry Name="CrowBarDoorText">The hinges are weak, maybe I could brake this door with something...</Entry>
+			<Entry Name="FindCbar">Lock is jammed, I have a feeling that I need to open it!</Entry>
+	</CATEGORY>
+	
+	<CATEGORY Name= "Levels">
+			<Entry Name="Bedroom">Bedroom</Entry>
+			<Entry Name="Cellar">Staircase to the Lab</Entry>
+			<Entry Name="LabLocked">Locked with a key...</Entry>
+			<Entry Name="Lab">Laboratory</Entry>
+			<Entry Name="Diner">Diner</Entry>
+	</CATEGORY>
+	
+	<CATEGORY Name="Ending">
+			<Entry Name="Credits">-BorisMediaProds Presents-[br][br][br]Scripts, Maps and Everything else: BorisMediaProds[br][br][br]Some ideas came from "SecondCellGames" and "Ryan Wang"[br][br] Original Idea : BorisMediaProds[br][br][br]Hope you liked my first custom story, subscribe to me on youtube BorisMediaProds[br][br]I put a lot of effort and time in this game, I'm only 13 years old :P</Entry>
+	</CATEGORY>
+
+</LANGUAGE>

@@ -1,0 +1,107 @@
+void OnStart ()
+ 
+
+{
+	
+AddEntityCollideCallback("Player", "Jumpscare_1", "Jump1", true, 1);
+
+SetPlayerLampOil(0);
+
+//Plays music
+	
+PlayMusic("25_amb.ogg", true, 0.6,  5, 1, true);
+
+AddUseItemCallback("", "BRkey", "Door1", "UsedKeyOnDoor", true);
+
+AddUseItemCallback("", "PianoKey", "mansion_2", "UsedKeyOnDoor1", true);
+
+AddEntityCollideCallback("Player", "Jumpscare_1", "FirstJumpScare", true, 1);
+
+
+}
+
+
+void BeginDoor(string &in entity)
+
+{
+
+if(GetSwingDoorLocked("Door1")==true)
+{
+
+SetMessage("Hints", "FirstDoorText", 2.0f);
+
+	}
+
+}
+
+
+void FirstJumpScare(string &in asParent, string &in asChild, int alState)
+ 
+{
+		
+PlaySoundAtEntity("", "24_iron_maiden", "Player", 0, false);
+
+}
+
+void UsedKeyOnDoor(string &in asItem, string &in asEntity)
+
+{	
+	
+SetSwingDoorLocked("Door1", false, true);
+
+	PlaySoundAtEntity("", "unlock_door", "Door1", 0, false);
+
+	RemoveItem("BRkey");
+
+}
+
+void UsedKeyOnDoor1(string &in asItem, string &in asEntity)
+
+{	
+	
+SetSwingDoorLocked("mansion_2", false, true);
+
+	PlaySoundAtEntity("", "unlock_door", "mansion_2", 0, false);
+	RemoveItem("PianoKey");
+
+}
+
+void Jump1(string &in asParent, string &in asChild, int alState)
+
+{  
+	
+PlaySoundAtEntity("", "24_iron_maiden", "Player", 0, false);
+
+	SetEntityActive("Monster_1", true);
+ 
+   AddTimer("", 0.7, "scared");
+
+}
+
+void scared(string &in asTimer)
+
+{
+	
+SetEntityActive("Monster_1", false);
+
+}
+
+void OnEnter ()
+
+
+{
+
+
+}
+
+
+void OnLeave ()
+
+
+{
+	
+StopMusic(0.0f, 1);
+
+}
+
+
